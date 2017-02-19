@@ -1,0 +1,95 @@
+﻿@model Calculator.Models.QuoteRequest
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+    
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="panel panel-heading">
+            
+            <h1>Mortgage Calculator</h1>
+            
+            <div class="text-center">
+                <h6>This is a guide to see how much you'd pay each month. The exact amount will depend on the type of mortgage and the lender.</h6>
+            </div>
+            <div class="text-center">
+                <h6><b>Plan ahead and estimate your monthly payment now</b></h6>
+            </div>
+        </div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    </div>
+
+    @using (Html.BeginForm("Result", "Home", FormMethod.Post))
+    {
+        @Html.ValidationSummary(true)
+        
+        <div class="panel-heading">
+            <h3 class="panel-title text-center">
+                <i class="fa fa-home" ></i>
+            </h3>
+        </div>
+       
+        <div class="panel panel-body">
+            <div class="form-group ">
+                <label class="control-label col-md-11 ">@Html.LabelFor(m=>m.borrow)</label>
+                <div class="col-md-11">
+                    @Html.TextBoxFor(m=>m.borrow, new { @class = "form-control", placeholder="£" })
+                    <div>  @Html.ValidationMessageFor(m => m.borrow) </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-md-11">@Html.LabelFor(m=>m.initialDeposit)</label>
+                <div class="col-md-11 ">
+                    @Html.TextBoxFor(m=>m.initialDeposit, new { @class = "form-control", placeholder = "£" })
+                    
+                        @Html.ValidationMessageFor(m => m.initialDeposit)
+
+                    </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-11">@Html.LabelFor(m=>m.apr)</label>
+                <div class="col-md-11">
+                    @Html.TextBoxFor(m=>m.apr, new { @class = "form-control", placeholder = "%" })
+                    
+                        @Html.ValidationMessageFor(m => m.apr)
+
+                    </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-11 ">@Html.LabelFor(m=>m.durationInMonths)</label>
+                <div class="col-md-11">
+                    @Html.TextBoxFor(m=>m.durationInMonths, new { @class = "form-control", placeholder = "months" })
+                    
+                        @Html.ValidationMessageFor(m => m.durationInMonths)
+                    </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-11 ">
+                    <button type="submit" class="btn btn-md btn-primary">Calculate</button>
+                    <br />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="< col-md-11">
+
+                    <button type="reset" class="btn btn-sm btn-default">Reset</button>
+                </div>
+            </div>
+            </div>
+            <br />
+
+            }

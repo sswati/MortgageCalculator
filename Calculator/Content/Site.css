@@ -1,0 +1,168 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/*overide Bootstrap*/
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: none;
+}
+
+
+h1,
+.h1 {
+  font-size: 60px;
+  text-align:center;
+  font-stretch:expanded;
+  font-weight:bolder;
+  color: black;
+  padding-top:0px;
+  font-family: 'Questrial', sans-serif;
+
+}
+
+.h6{
+    font-family:'Questrial';
+}
+/*remove line near header*/
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 0px 
+}
+
+.ui{
+    color:white;
+
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 0px;
+  margin-top:3px;
+  font-weight: bold;
+}
+.col-md-11{
+    margin-left:90px;
+}
+
+.panel {
+    margin-bottom: 20px;
+    background-color: lightgrey;
+    opacity:0.8;
+    font-family:'Questrial', sans-serif;
+    border: 2px thin white;
+    
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.panel-heading{
+    background-color:red;
+    opacity:0.6;
+    color:white;
+   padding-top:10px;
+    padding-bottom:10px;
+    
+}
+
+
+.h6{
+    font-size:14px;
+    
+}
+
+body {
+    background-color: grey;
+    background-image: url('Images/new-york-1116320_1920-compressor.jpg');
+    background-size: cover;
+    color: black;
+    font-size: 18px;
+    line-height: 2;
+}
+
+button,
+input,
+select,
+textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: 100%;
+  margin-bottom:20px;
+}
+
+.btn{
+    margin-bottom:7px;
+}
+
+
+
+.Compare{
+    text-align:center;
+    
+    font-weight:600;
+    font-size:17px;
+}
+
+/*remove padding from body-extend the pg-shifts the pg up*/
+
+body {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size:18px;
+    
+}
+
+
+em { 
+    text-decoration:underline;
+
+}
+
+
+.form-control{
+    border-bottom-left-radius:6px;
+    border-bottom-right-radius:6px;
+    border-top-right-radius:6px;
+    border-top-left-radius:6px;
+    line-height:4px;
+    width:80%;
+    
+}
+
+
+table, th, td {
+    border: 2px solid white;
+}
+
+.field-validation-error{
+    color:red;
+    font-size:14px;
+    font-weight:700;
+}

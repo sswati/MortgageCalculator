@@ -1,0 +1,171 @@
+﻿@model Calculator.Models.QuoteRequest
+
+@{
+    ViewBag.Title = "Result";
+}
+
+<div class="panel panel-heading">
+    <h1>Result</h1>
+</div>
+<hr />
+
+<div class="panel panel-default">
+        <div class="table">
+            
+            <table style="width:100% ">
+                
+            <tr>
+                <th></th>
+                <th class="text-center">Repayment Mortgage</th>
+                
+                <th class="text-center">Interest-Only Mortgage</th>
+                
+            </tr>
+            <tr>
+                
+                <td style="font-weight:600">
+                   Total Interest Paid
+                </td>
+                <td>£@String.Format("{0:F}", @Model.totalInterest)</td>
+                
+                <td>£@String.Format("{0:F}", Model.totalinterestIO)</td>
+                
+            </tr>
+                <tr>
+                    <td style="font-weight:600">Capital Repaid</td>
+                    <td>£@String.Format("{0:F}", Model.principal) </td>
+                    
+                    <td>£0.00</td>
+                </tr>
+                <tr>
+                    <td style="font-weight:600">Monthly Repayment</td>
+                    <td>£@String.Format("{0:F}", Model.monthlyPayment)</td>
+                    
+                    <td> £@String.Format("{0:F}", Model.monthIOPayment)</td>
+                </tr>
+                
+              
+            </table>
+             
+
+        </div>
+    </div>
+
+<br />
+
+
+<div class="panel panel-default">
+    <p class="Compare">
+        If you choose a repayment mortgage, you will pay <em> £@String.Format("{0:F}", Model.Compare) more</em> over @Model.years
+        years than an interest - only mortgage, but you will also own a home worth £@String.Format("{0:F}", Model.propertyValue)
+    </p>
+
+
+    <p class="Compare">
+        If you choose an interest- only mortgage, you will pay <em>£@String.Format("{0:F}", Model.Compare) less</em>  over @Model.years years 
+        than a repayment mortgage
+        but you will still owe £@String.Format("{0:F}", Model.principal) on your home.
+    </p>
+
+</div>
+
+<br />
+
+    @section Scripts {
+
+        <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>"
+    }
+
+    <script src="~/Scripts/Chart.min.js"></script>
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+
+<div class="panel panel-default"> 
+    <div class="myChart canvas-holder">
+
+        <canvas id="myChart" width="400" height="330"></canvas>
+    </div>
+
+
+    <script>
+        var ctx = document.getElementById("myChart");
+
+
+        var compareData = {
+
+            labels: [
+                "Interest-Only Mortgage", "Repayment Mortgage"
+            ],
+            datasets: [{
+                label: "Principal",
+                backgroundColor: "rgba(34,139,34,0.5)",
+                hoverBackgroundColor: "rgba(34,139,34,1)",
+                data: [0, @Model.principal]
+            }, {
+                label: "Interest",
+                backgroundColor: "rgba(255, 0, 0, 0.5)",
+                hoverBackgroundColor: "rgba(255, 0, 0, 1)",
+                // The vals below have been multiplied by 10 (a 0 appended) so that the values are at least visible to the naked eye
+                data: [ @Model.totalinterestIO,@Model.totalInterest]
+            },
+
+
+            ]
+        };
+
+        var compareOptions = {
+
+            scales: {
+                xAxes: [{
+                    stacked: true,
+
+                    ticks: {
+                        fontColor: 'black'
+
+                    },
+
+                    scaleLabel: {
+                        display: true,
+                        labelString: '£',
+                        fontColor: 'black',
+                        fontSize: 14
+
+
+
+                    },
+
+
+                }],
+                yAxes: [{
+                    stacked: true,
+                    ticks: { fontColor: 'black' },
+
+
+                }]
+            },
+            tooltips: {
+                enabled: false
+            },
+
+            responsive: true,
+            maintainAspectRatio: false,
+
+            legend: {
+                labels:
+        { fontColor: 'black' }
+            }
+
+
+        };
+
+        var ctxBarChart = document.getElementById("myChart");
+        var priceBarChart = new Chart(ctxBarChart, {
+            type: 'horizontalBar',
+            data: compareData,
+            options:
+    compareOptions
+        });
+
+
+
+    </script>
+    </div>
